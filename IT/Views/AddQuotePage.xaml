@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="IT.AddQuotePage"
+             BackgroundColor="#215ace">
+    
+	<StackLayout Margin="5,20,5,0">
+        <StackLayout.Resources>
+                         <ResourceDictionary>
+                            <Color x:Key="labelTextColor">White</Color>
+                            <Color x:Key="buttonTextColor">White</Color>
+                            <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="Black" x:Key="buttonBackgroundColor" />
+                            <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="#262222" x:Key="EntryBackgroundColor" />
+                
+                            <Style x:Key="LabelStyle" TargetType="Label">
+                                <Setter Property="TextColor" Value="{StaticResource labelTextColor}" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                                <Setter Property="VerticalOptions" Value="Center" />
+                            </Style>
+                            <Style x:Key="ButtonStyle" TargetType="Button">
+                                <Setter Property="TextColor" Value="{StaticResource buttonTextColor}"/>
+                                <Setter Property="BorderWidth" Value="2" />
+                                <Setter Property="BorderColor" Value="#6DA001" />
+                                <Setter Property="BorderRadius" Value="2" />
+                                <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                                <Setter Property="WidthRequest" Value="150"/>
+                            </Style>
+                            <Style x:Key="EntryStyle" TargetType="Entry">
+                                <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                                <Setter Property="TextColor" Value="{StaticResource labelTextColor}"/>
+                                <Setter Property="BackgroundColor" Value="{StaticResource EntryBackgroundColor}"/>
+                            </Style>
+                        </ResourceDictionary>  
+                    </StackLayout.Resources>
+            <Label Text="Quote: "
+                    Margin="0,20,0,0"
+                    Style="{StaticResource LabelStyle}"/>
+            <Entry Text="{Binding Path=Quote}" Style="{StaticResource EntryStyle}"/>
+        
+            <Label Text="Who Said It? : "
+                    Margin="0,20,0,0"
+                    Style="{StaticResource LabelStyle}"/>
+            <Entry Text="{Binding Path=Person}" Style="{StaticResource EntryStyle}"/>
+
+            <DatePicker Date="{Binding Path=dateTime}"
+                        Margin="0,20,0,0"
+                        BackgroundColor="#262222"
+                        TextColor="White"/>
+            <Button Text="Submit"
+                    Style="{StaticResource ButtonStyle}"
+                    Margin="0,20,0,0"
+                    Clicked="OnSaveActivated_Clicked"/>
+        </StackLayout>
+</ContentPage>

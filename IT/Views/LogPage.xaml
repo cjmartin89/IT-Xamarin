@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="IT.Views.LogPage"
+             Title="Log"
+             BackgroundColor="#215ace">
+    
+        <StackLayout Margin="5,20,5,0">
+                <StackLayout.Resources>
+                         <ResourceDictionary>
+                            <Color x:Key="labelTextColor">White</Color>
+                            <Color x:Key="buttonTextColor">White</Color>
+                            <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="Black" x:Key="buttonBackgroundColor" />
+                            <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="#262222" x:Key="EntryBackgroundColor" />
+                
+                            <Style x:Key="LabelStyle" TargetType="Label">
+                                <Setter Property="TextColor" Value="{StaticResource labelTextColor}" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                                <Setter Property="VerticalOptions" Value="Center" />
+                            </Style>
+                            <Style x:Key="ButtonStyle" TargetType="Button">
+                                <Setter Property="TextColor" Value="{StaticResource buttonTextColor}"/>
+                                <Setter Property="BorderWidth" Value="2" />
+                                <Setter Property="BorderColor" Value="#6DA001" />
+                                <Setter Property="BorderRadius" Value="2" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                                <Setter Property="WidthRequest" Value="150"/>
+                                <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                            </Style>
+                            <Style x:Key="EntryStyle" TargetType="Entry">
+                                <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                                <Setter Property="TextColor" Value="{StaticResource labelTextColor}"/>
+                                <Setter Property="BackgroundColor" Value="{StaticResource EntryBackgroundColor}"/>
+                            </Style>    
+                        </ResourceDictionary>  
+                    </StackLayout.Resources>
+                        <Label Text="Gerald Was Wrong Today?"
+                               Style="{StaticResource LabelStyle}"/>
+                    
+                        <Label Text="How Long Was Gerald Wrong (In Minutes): "
+                                Margin="0,20,0,0"
+                                Style="{StaticResource LabelStyle}"/>
+                        <Entry Text="{Binding Path=TimeWrong}" Style="{StaticResource EntryStyle}"/>
+                    
+                        <Label Text="Enter The Topic Gerald Was Wrong About: "
+                                Margin="0,20,0,0"
+                                Style="{StaticResource LabelStyle}"/>
+                        <Entry Text="{Binding Path=Subject}" Style="{StaticResource EntryStyle}"/>
+                    
+                        <Label Text="Detail: "
+                                Margin="0,20,0,0"
+                                Style="{StaticResource LabelStyle}"/>
+                        <Entry Text="{Binding Path=Details}" Style="{StaticResource EntryStyle}"/>
+                    
+                        <Button Text="Submit"
+                                Margin="0,20,0,0"
+                                Clicked="OnSaveActivated"
+                                Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+</ContentPage>

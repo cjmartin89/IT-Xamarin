@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="IT.Views.ListViewPage"
+             Title="History"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="Add" Clicked="OnAddItemClicked" Priority="5" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout.Resources>
+                         <ResourceDictionary>
+                            <Color x:Key="labelTextColor">#22222</Color>
+                            <Color x:Key="buttonTextColor">#26222</Color>
+                            <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="White" x:Key="SeparatorColor" />
+                
+                            <Style x:Key="ListViewStyle" TargetType="ListView">
+                                <Setter Property="SeparatorColor" Value="{StaticResource SeparatorColor}" />
+                            </Style>
+                        </ResourceDictionary>  
+                    </StackLayout.Resources>
+        <SearchBar Placeholder="Search..." 
+                   TextChanged="Handle_TextChanged" 
+                   BackgroundColor="#215ace" 
+                   TextColor="White"
+                   PlaceholderColor="White"
+                   />
+        <ListView x:Name="listView" 
+                  ItemSelected="OnItemSelected" 
+                  IsPullToRefreshEnabled="true" 
+                  Refreshing="Handle_Refreshing"
+                  BackgroundColor="#215ace"
+                  Margin="0,-10,0,0"
+                  Style="{StaticResource ListViewStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Subject}" Detail="{Binding dateTime}" DetailColor="White" TextColor="Black">
+                        <TextCell.ContextActions>
+                            <MenuItem Clicked="Delete_Clicked" CommandParameter="{Binding .}"
+                                Text="Delete" IsDestructive="True"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

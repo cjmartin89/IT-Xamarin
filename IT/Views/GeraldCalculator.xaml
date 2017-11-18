@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="IT.Views.GeraldCalculator"
+	         xmlns:local="clr-namespace:IT.Views">
+    <ContentPage Title="Gerald Calculator" BackgroundColor="#215ace">
+        <ScrollView>
+            <StackLayout Margin="0,10,0,0" >
+                <StackLayout.Resources>
+                     <ResourceDictionary>
+                        <OnPlatform x:TypeArguments="Color" Android="White" 
+                            iOS="White" x:Key="labelTextColor" />
+                        <OnPlatform x:TypeArguments="Color" Android="White" 
+                            iOS="White" x:Key="buttonTextColor" />
+
+                        <OnPlatform x:TypeArguments="Color" Android="#262222" 
+                            iOS="#262222" x:Key="buttonBackgroundColor" />
+                    
+                        <Style x:Key="LabelStyle" TargetType="Label">
+                            <Setter Property="TextColor" Value="{StaticResource labelTextColor}" />
+                            <Setter Property="HorizontalOptions" Value="Center" />
+                            <Setter Property="VerticalOptions" Value="Center" />
+                        </Style>
+                        <Style x:Key="ButtonStyle" TargetType="Button">
+                            <Setter Property="TextColor" Value="{StaticResource buttonTextColor}"/>
+                            <Setter Property="BorderWidth" Value="2" />
+                            <Setter Property="BorderColor" Value="#6DA001" />
+                            <Setter Property="BorderRadius" Value="2" />
+                            <Setter Property="HorizontalOptions" Value="Center" />
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="BackgroundColor" Value="{StaticResource buttonBackgroundColor}"/>
+                        </Style>
+                    </ResourceDictionary>  
+                </StackLayout.Resources>
+                    <Image Source="mblogo.png" Margin="5,0,5,40"/>
+                    <Label Text="Welcome To The Gerald Is Wrong Calculator" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            Margin="0,-20,0,0"
+                            Style="{StaticResource LabelStyle}"/>
+                    
+                    <Label Text="Gerald's Current Percentage Right: "
+                           Style="{StaticResource LabelStyle}"
+                           Margin="0,10,0,0" />
+                
+                    <Label x:Name="PercentageWrong"
+                           Style="{StaticResource LabelStyle}"
+                           Margin="0,5,0,0" 
+                           FontSize="30"
+                           FontAttributes="Bold"/>
+
+                    <Label Text="Enter The Percentage Of Time Gerald Is Right: " 
+                            Style="{StaticResource LabelStyle}"
+                            Margin="0,20,0,0"/>
+                
+                    <Entry Placeholder="99.98" 
+                            HorizontalOptions="Center"
+                            Margin="0,20,0,0"
+                            WidthRequest="300"
+                            HorizontalTextAlignment="Center"
+                            x:Name="PercentageRight"
+                            BackgroundColor="#262222"
+                            PlaceholderColor="White"
+                            />
+                  <Button Text="Calculate" 
+                            WidthRequest="225"
+                            HeightRequest="50"
+                            Margin="0,20,0,0"
+                            Style="{StaticResource ButtonStyle}"
+                            Clicked="Calculate_Clicked"/>
+                   <Label Text="" 
+                            Style="{StaticResource LabelStyle}"
+                            Margin="0,20,0,0"
+                            x:Name="Days"/>
+                    <Label Text="" 
+                            Style="{StaticResource LabelStyle}"
+                            Margin="0,5,0,0"
+                            x:Name="Hours"/>
+                    <Label Text="" 
+                            Style="{StaticResource LabelStyle}"
+                            Margin="0,5,0,0"
+                            x:Name="Minutes"/>
+
+                    <Label Text="" 
+                            Style="{StaticResource LabelStyle}"
+                            Margin="0,5,0,0"
+                            x:Name="Seconds"/>
+                
+                    <Button Text="Log a Gerald Is Wrong Event"
+                            Margin="0,10,0,0"
+                            Clicked="Handle_Clicked"
+                            WidthRequest="225"
+                            HeightRequest="60"
+                            Style="{StaticResource ButtonStyle}"/>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+<local:ListViewPage/>
+  </TabbedPage>
